@@ -1,0 +1,14 @@
+{% extends "base1.html" %}
+{% load static %}
+
+{% block title %}Résultat du Matching{% endblock %}
+
+{% block content %}
+<h2>Résultat</h2>
+<p><strong>Titre :</strong> {{ result.title }}</p>
+<p><strong>Score :</strong> {{ result.match_score }}%</p>
+<p><strong>Succès :</strong> {{ result.success_rate }}%</p>
+<p><strong>Échec :</strong> {{ result.failure_rate }}%</p>
+
+<a href="{% url 'dashboard_matching' %}">Voir le Dashboard</a>
+{% endblock %}

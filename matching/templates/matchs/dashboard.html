@@ -1,0 +1,63 @@
+{% extends 'base1.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+
+<div class="dashboard-container">
+    <h1>Historique tableau de bord Skilmapp</h1>
+
+
+
+    <!-- Section graphique -->
+    <div class="charts">
+        <div class="chart-box">
+            <h2>Répartition des niveaux prédits</h2>
+            <canvas id="pieChart"></canvas>
+        </div>
+        <div class="chart-box">
+            <h2>Matchings par année</h2>
+            <canvas id="barChart"></canvas>
+        </div>
+    </div>
+
+    <!-- Bouton de téléchargement -->
+    <div class="download-section">
+        <form method="GET" action="{% url 'download_pdf' %}">
+            <button type="submit" class="btn-download">📄 Télécharger en PDF</button>
+        </form>
+    </div>
+
+    <!-- Tableau des historiques -->
+    <div class="history-table">
+        <h2>Historique des sujets analysés</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Date</th>
+                    <th>Niveau prédit</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for result in results %}
+                <tr>
+                    <td>{{ result.titre }}</td>
+                    <td>{{ result.date_analyse|date:"d/m/Y" }}</td>
+                    <td>{{ result.niveau_pred }}</td>
+                </tr>
+                {% empty %}
+                <tr><td colspan="3">Aucun résultat disponible.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static 'js/dashboard.js' %}"></script>
+<script>
+    const pieData = {{ pie_data|safe }};
+    const barData = {{ bar_data|safe }};
+</script>
+{% endblock %}

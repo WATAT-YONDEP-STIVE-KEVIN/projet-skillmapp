@@ -1,0 +1,67 @@
+{% extends 'base1.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/matching.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="page-matching">
+    <h2>Matching de sujets d'examen 📄</h2>
+    <div class="matching-container">
+        <!-- SECTION FORMULAIRE -->
+        <div class="matching-form">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="titre">Titre du sujet</label>
+                <input type="text" name="titre" id="titre" required placeholder="Ex: Architecture des ordinateurs">
+
+                <label for="fichier">Charger le sujet (PDF/DOCX)</label>
+                <input type="file" name="fichier" id="fichier" accept=".pdf,.docx" required>
+
+                <button type="submit">Lancer le matching</button>
+            </form>
+        </div>
+
+        <!-- SECTION PERFORMANCE -->
+        <div class="matching-performance">
+            <h3>Performance du matching</h3>
+            <canvas id="resultChart"></canvas>
+        </div>
+    </div>
+</div>
+
+{% if result %}
+    <div>
+        <h3>Résultat : {{ result }}</h3>
+        <p>Taux de confiance : {{ confidence }}%</p>
+    </div>
+{% endif %}
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('resultChart').getContext('2d');
+    const resultChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Succès', 'Échec'],
+            datasets: [{
+                data: [70, 30],  // À rendre dynamique avec Django plus tard
+                backgroundColor: ['#2ecc71', '#e74c3c']
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'bottom'
+                },
+                title: {
+                    display: false
+                }
+            }
+        }
+    });
+</script>
+{% endblock %}

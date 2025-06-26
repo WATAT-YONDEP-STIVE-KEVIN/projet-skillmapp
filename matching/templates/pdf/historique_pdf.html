@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Historique des Matchings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #999;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .footer {
+            margin-top: 40px;
+            text-align: right;
+            font-size: 11px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Historique de Matching – {{ user.get_full_name|default:user.username }}</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Date</th>
+                <th>Niveau prédit</th>
+                <th>Score de confiance (%)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for result in results %}
+            <tr>
+                <td>{{ result.titre }}</td>
+                <td>{{ result.date_analyse|date:"d/m/Y H:i" }}</td>
+                <td>{{ result.niveau_pred }}</td>
+                <td>{{ result.success_rate|floatformat:2 }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="footer">
+        Généré automatiquement par Skilmapp – {{ now|date:"d/m/Y à H:i" }}
+    </div>
+</body>
+</html>

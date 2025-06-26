@@ -1,0 +1,128 @@
+superuser:
+    username: kevin
+    password: 1234kevin
+
+
+user:
+    username : stive
+    password : 1234stive@237
+
+    username: madyba
+    password: 132madyba@1234
+
+    username : bernard
+    firstname: erdi
+    password: 1234bernard@237re
+    email: bernard237@gmail.com
+
+     source env/skillmapp/bin/activate
+
+
+
+
+
+import os
+import re
+import string
+import time
+import fitz  # PyMuPDF
+import docx2txt
+import pandas as pd
+from pathlib import Path
+
+
+def clean_text(text):
+    """
+    Nettoie le texte extrait en supprimant les entêtes officielles et les symboles inutiles.
+    Convertit en minuscules, supprime les ponctuations, les mots-clés d'entête et normalise les espaces.
+    """
+    text = text.lower()
+    # Patterns pour supprimer les mentions administratives fréquentes
+    patterHeadF = r"minist[eè]re|coll[eè]ge|d[eé]partemen|ghbs|evaluation|r[eé]publique|cameroun|region|paix|travail|patrie|d[ée]l[eé]gation|r[eé]gionale|lyc[eé]e|ann[eé]e scolaire|bilingue|s[eé]quence|examinateur"
+    patterHeadE = r"ministry|minesec|republic|cameroon|region|peace|work|fatherland|delegation|regional|divisional|gbs|secondary|education"
+
+    # Nettoyage des sauts de ligne, ponctuations, et termes institutionnels
+    text = re.sub(r"\n", " ", text)
+    text = re.sub(r"-", " ", text)
+    text = re.sub(r"[\.]+", "", text)
+    text = re.sub(patterHeadF, '', text)
+    text = re.sub(patterHeadE, '', text)
+
+    # Supprimer les ponctuations restantes et normaliser les espaces
+    text = text.translate(str.maketrans('', '', string.punctuation))
+    text = " ".join(text.split())
+    return text
+
+
+def extract_pdf_text_images(file_path):
+    """
+    Extrait le texte et les images d'un fichier PDF. Retourne le texte nettoyé et la liste des images en mémoire.
+    """
+    doc = fitz.open(file_path)
+    text = ""
+    images = []
+
+    for page_num, page in enumerate(doc):
+        text += " " + page.get_text("text")
+
+        image_list = page.get_images(full=True)
+        for img_index, img in enumerate(image_list):
+            xref = img[0]
+            base_image = doc.extract_image(xref)
+            image_bytes = base_image["image"]
+            images.append({
+                "page": page_num + 1,
+                "image_data": image_bytes,
+                "ext": base_image["ext"]
+            })
+
+    return clean_text(text), images
+
+
+def extract_docx_text(file_path):
+    """
+    Extrait et nettoie le texte d'un document Word (DOCX).
+    """
+    return clean_text(docx2txt.process(file_path))
+
+
+def process_exam_files(directory, level_label="6e"):
+    """
+    Parcourt les fichiers dans un dossier donné et extrait le texte (et images si PDF).
+    Retourne un DataFrame avec le texte nettoyé et les étiquettes de classe, et un dictionnaire d'images.
+    """
+    data = []
+    images_dict = {}
+
+    files = Path(directory).glob("*.*")
+    for file_path in files:
+        if file_path.suffix.lower() == ".pdf":
+            print(f"[PDF] Traitement: {file_path.name}")
+            text, images = extract_pdf_text_images(file_path)
+            images_dict[file_path.name] = images
+        elif file_path.suffix.lower() == ".docx":
+            print(f"[DOCX] Traitement: {file_path.name}")
+            text = extract_docx_text(file_path)
+            images = []
+        else:
+            print(f"[IGNORÉ] Format non supporté: {file_path.name}")
+            continue
+
+        data.append({"text": text, "category": level_label})
+
+    df = pd.DataFrame(data)
+    return df, images_dict
+
+
+if __name__ == "__main__":
+    start = time.process_time()
+
+    dossier_sujets = "./Premiere"
+    label = "6e"
+    df, images = process_exam_files(dossier_sujets, label)
+
+    df.to_csv(f"{label}_dataset.csv", index=False, encoding="utf-8")
+    print(f"Export CSV terminé: {label}_dataset.csv")
+
+    print(f"Total fichiers traités: {len(df)}")
+    print(f"Temps d'exécution: {round(time.process_time() - start, 2)}s")

@@ -1,0 +1,73 @@
+{% extends "base1.html" %}
+{% load static %}
+
+{% block title %}Accueil - Skilmapp{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/accueil.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <div class="hero-content">
+    <h1 class="title">Bienvenue sur <span class="highlight">Skilmapp</span></h1>
+    <p class="subtitle">
+      Plateforme intelligente de matching entre sujets d'examen et programme scolaire.<br>
+      Automatisez la correspondance, identifiez les questions hors programme.
+    </p>
+    <a href="{% url 'matching_page' %}" class="cta-button">Lancer le matching</a>
+  </div>
+  <div class="hero-image">
+    <img src="{% static 'images/hero-illustration.svg' %}" alt="Illustration de matching">
+  </div>
+</section>
+
+<section class="features">
+  <h2>Pourquoi utiliser Skilmapp ?</h2>
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="feature-icons">
+        <i class="fa-solid fa-robot"></i>
+      </div>
+      <h3>IA performante</h3>
+      <p>CamemBERT cible précisément le niveau scolaire adéquat.</p>
+    </div>
+<div class="feature-card">
+    <div class="feature-icons">
+        <i class="fa-solid fa-book-open-reader"></i>
+        <i class="fa-solid fa-clock"></i>
+    </div>
+    <h3>Gain de temps</h3>
+    <p>
+        Gagnez un temps précieux grâce à une vérification automatique basée sur les référentiels scolaires officiels.
+        Notre base de données constamment mise à jour réduit les épreuves hors programme.
+    </p>
+</div>
+
+    <div class="feature-card">
+      <div class="feature-icons"><i class="fa-solid fa-book-open-reader"></i></div>
+      <h3>Alignement programmatique</h3>
+      <p>Contrôle la conformité des sujets selon les référentiels officiels.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icons">
+        <i class="fa-solid fa-chart-line"></i>
+      </div>
+      <h3>Statistiques dynamiques</h3>
+      <p>Accès à des analyses visuelles interactives des résultats de matching.</p>
+    </div>
+  </div>
+</section>
+
+
+<section class="contact">
+  <h2>Vous avez une question ?</h2>
+  <p>Contactez-nous pour toute demande de renseignement ou suggestion.</p>
+  <a href="mailto:contact@skilmapp.com" class="contact-button">Nous contacter</a>
+</section>
+
+<script src="{% static 'js/accueil.js' %}"></script>
+{% endblock %}
+
+
+

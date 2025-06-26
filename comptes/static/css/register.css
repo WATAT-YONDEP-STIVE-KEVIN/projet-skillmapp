@@ -1,0 +1,183 @@
+/* static/css/register.css */
+
+/* Import de la police Poppins (idem login) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body {
+    font-family: 'Poppins', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #cbd1d3; /* même fond gris doux que login */
+    /* Supprimé l'image de fond pour homogénéité */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.comptes {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    max-width: 500px;
+    width: 100%;
+    /* retrait du padding 50px trop important, pour coller au login */
+}
+
+.register__form__title {
+    background: #3498db; /* dégradé violet-bleu identique */
+    max-width: 500px;
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+    box-sizing: border-box;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px; /* réduit le padding pour cohérence */
+}
+
+.register__form__title h1 {
+    text-align: center;
+    color: #fff;
+    font-size: 1.3em;
+    margin: 0;
+    font-weight: 600;
+}
+
+.register__form {
+    background: #fff;
+    padding: 55px 60px 40px 60px; /* même padding que login */
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-group {
+    margin-bottom: 10px; /* espace réduit entre champs */
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 400; /* police moins lourde que bold */
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: #555; /* gris moyen pour la lisibilité */
+}
+
+.form-group input {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 400; /* enlever le gras */
+    color: #333;
+    background-color: #f9f9f9;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+.form-group input:focus {
+    border-color: #0066cc; /* bleu clair */
+    background-color: #fff;
+    outline: none;
+}
+
+input[type="submit"] {
+    padding: 12px;
+    background: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s ease;
+    width: 100%;
+    max-width: 300px;
+    margin: 20px auto 0 auto; /* centré horizontalement avec marge haute */
+    display: block;
+}
+input[type="submit"]:hover {
+    background-color: #2980b9;
+}
+/* input[type="submit"]:hover {
+    background: linear-gradient(45deg, #3498db, #1972ad);
+} */
+
+.extra-links {
+    text-align: center;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.extra-links a {
+    color: #0066cc;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.extra-links a:hover {
+    text-decoration: underline;
+}
+
+.error-message {
+    color: red;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+    .register__form {
+        padding: 30px 20px;
+    }
+}
+/* Réduction taille police du texte spécifique */
+.extra-links p {
+    font-size: 12px; /* taille plus petite et lisible */
+    margin-top: 10px;
+}
+
+/* Pour que le lien dans ce texte garde sa couleur et style */
+.extra-links p a {
+    font-size: 12px;
+    color: #0066cc;
+    text-decoration: none;
+}
+
+.extra-links p a:hover {
+    text-decoration: underline;
+}
+
+/* Augmenter la largeur maximale du formulaire */
+.comptes {
+    max-width: 600px;  /* passer de 500px à 600px */
+    width: 100%;
+}
+
+/* Adapter aussi le titre et formulaire pour qu'ils prennent la largeur */
+.register__form__title,
+.register__form {
+    max-width: 600px;
+    width: 100%;
+}
+
+.form-group input {
+    margin: 0 auto;
+    padding: 12px 12px;          /* hauteur plus grande (16px), largeur conservée */
+    font-size: 16px;             /* police plus grande */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-weight: 400;
+    color: #333;
+    background-color: #f9f9f9;
+    transition: border-color 0.2s, background-color 0.2s;                 /* pour que les champs prennent toute la largeur */
+}
+
+.form-group input:focus {
+    border-color: #0066cc;
+    background-color: #fff;
+    outline: none;
+}

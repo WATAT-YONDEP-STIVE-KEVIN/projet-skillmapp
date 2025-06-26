@@ -1,0 +1,336 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f7f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+/* HEADER */
+header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1001;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+nav a, .logout-form button {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.hamburger {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+nav.active {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+    top: 60px;
+    right: 30px;
+    background-color: #2c3e50;
+    padding: 10px;
+    border-radius: 8px;
+    z-index: 1000;
+}
+
+/* CONTAINER */
+.container {
+    max-width: 960px;
+    margin: 30px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* FOOTER */
+footer {
+    background-color: #2c3e50;
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.footer-container {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+    text-align: left;
+}
+
+.team-section {
+    flex: 1 1 100%;
+}
+
+.team {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.member {
+    text-align: center;
+    flex: 1 1 150px;
+}
+
+.member img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.footer-section h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: #f1c40f;
+}
+
+.footer-bottom {
+    margin-top: 30px;
+    font-size: 0.85rem;
+    color: #ccc;
+    text-align: center;
+    width: 100%;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.social-icons a {
+    color: white;
+    font-size: 24px;
+    transition: color 0.3s, transform 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-decoration: none;
+}
+
+/* Couleurs officielles des réseaux sociaux */
+.social-icons a.github {
+    background-color: #181717;
+}
+
+.social-icons a.linkedin {
+    background-color: #0077B5;
+}
+
+.social-icons a.facebook {
+    background-color: #1877F2;
+}
+
+.social-icons a.tiktok {
+    background-color: #010101;
+}
+
+.social-icons a.telegram {
+    background-color: #0088cc;
+}
+
+.social-icons a.whatsapp {
+    background-color: #25D366;
+}
+
+/* Effet au survol */
+.social-icons a:hover {
+    filter: brightness(1.1);
+    transform: scale(1.1);
+}
+
+/* Assure que les images dans icônes prennent toute la place */
+.social-icons a img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* BUTTONS */
+button,
+input[type="submit"] {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover,
+input[type="submit"]:hover {
+    background-color: #2980b9;
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+
+    nav {
+        display: none;
+    }
+
+    nav.active {
+        display: flex;
+    }
+
+    .container {
+        margin: 15px;
+        padding: 15px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+
+    .team {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    header .logo {
+        font-size: 20px;
+    }
+
+    .container {
+        margin: 10px;
+        padding: 10px;
+    }
+
+    button,
+    input[type="submit"] {
+        width: 100%;
+        padding: 12px;
+        font-size: 15px;
+    }
+
+    nav a {
+        font-size: 14px;
+    }
+
+    .social-icons a {
+        width: 36px;
+        height: 36px;
+    }
+}
+
+
+/* Footer container : espace et bordures entre sections */
+.footer-container {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+    text-align: left;
+   /* border-top: 2px solid #fffbe9;  Ligne de séparation en haut */
+    padding-top: 30px;
+}
+.footer-section h3 {
+font-size: 1.3rem;}
+/* Chaque section a un fond légèrement différent, un padding et une bordure droite */
+.footer-section {
+    flex: 1 1 300px;
+    padding: 20px;
+     /* Fond légèrement plus foncé */
+   /* border-right: 1px solid #c0bfbd;  Ligne de séparation verticale */
+
+   
+    color: white;
+}
+
+/* Supprimer la bordure droite de la dernière section */
+.footer-section:last-child {
+    border-right: none;
+}
+
+/* Titres des sections */
+.footer-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #e7c91e;
+   
+    padding-bottom: 8px;
+}
+
+/* Style spécifique à la section réseaux sociaux */
+.social-section {
+    background-color: #2c3e50; /* Couleur différente pour bien séparer */
+}
+
+/* Footer bottom style */
+.footer-bottom {
+    margin-top: 40px;
+    font-size: 0.9rem;
+    color: #ccc;
+    text-align: center;
+    width: 100%;
+    border-top: 1px solid #c2c1bd;
+    padding-top: 15px;
+}
+
+/* Responsive : sur petit écran, les sections deviennent en colonne sans bordure droite */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        gap: 20px;
+        padding-top: 20px;
+        border-top: none;
+    }
+    .footer-section {
+        border-right: none;
+        background-color: #34495e;
+        border-radius: 8px;
+        padding: 15px;
+    }
+    .footer-section h3 {
+        border-bottom: 1px solid #f1c40f;
+    }
+}

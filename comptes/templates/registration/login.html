@@ -1,0 +1,45 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    <h1>Login-page</h1>
+{% endblock %}
+
+{% block css %} <link rel="stylesheet" href="{% static 'css/login.css' %}"> {% endblock %}
+
+
+{% block content %}
+   
+
+   
+   <div class="comptes">
+    <div class="login__form__title"><h1>SkillMapp Login-form</h1></div>
+<div class="login__form">
+    <form method="POST" action="{% url 'login' %}">
+        {% csrf_token %}
+        <!-- {{ form.as_p }} -->
+        <p>{{ form.username.label_tag }} {{ form.username }}</p>
+        <p>{{ form.password.label_tag }} {{ form.password }}</p>
+        <input type="hidden" name="next" value="{{ next }}"/>
+        <input type="submit" value="Login">
+           {% if form.non_field_errors %}
+            <p class="error-message">
+                Votre nom d'utilisateur ou mot de passe est incorrect. Veuillez réessayer.
+            </p>
+        {% endif %}
+    </form>
+
+    <div class="extra-links">
+        <p><a href="{% url 'password_reset' %}">Mot de passe oublié?</a></p>
+        {% if not form.errors %}
+            <p>Vous n'avez pas de compte ? <a href="{% url 'register' %}">Créer un compte</a>.</p>
+        {% endif %}
+
+    </div>
+</div>
+
+
+   </div>
+
+{% endblock %}

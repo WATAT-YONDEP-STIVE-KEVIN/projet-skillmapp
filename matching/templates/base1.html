@@ -1,0 +1,83 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Skilmapp{% endblock %}</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Lien vers le CSS global -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    {% block css %}{% endblock %}
+</head>
+<body>
+    <header>
+        <h1>Skilmapp</h1>
+        <nav>
+            <a href="{% url 'accueil' %}">Accueil</a>
+            <a href="{% url 'matching_page' %}">Matching</a>
+            <a href="{% url 'dashboard_view' %}">Dashboard</a>
+            <a href="{% url 'logout' %}">Déconnexion</a>
+            <a href="{% url 'edit' %}">Compte</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+<footer>
+  <div class="footer-container">
+    <div class="footer-section">
+      
+      <div class="member">
+        <h3>Co-fondateur</h3>
+        <img src="{% static 'images/watat.jpg' %}" alt="Membre 1">
+        <div class="member-info">
+          <strong>WATAT YONDEP STIVE KEVIN</strong><br>
+          Data scientist/Web developer
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-section">
+      
+      <div class="member">
+        <h3>Co-fondateur</h3>
+        <img src="{% static 'images/watat.jpg' %}" alt="Membre 2">
+        <div class="member-info">
+          <strong>VOUKENG TEDONKEMWA ERDI DESIRÉ</strong><br>
+          Data scientist
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-section social-section">
+      <h3>Réseaux sociaux</h3>
+      <div class="social-icons">
+        <a href="https://github.com" target="_blank" class="github" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com" target="_blank" class="linkedin" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://facebook.com" target="_blank" class="facebook" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="https://tiktok.com" target="_blank" class="tiktok" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        <a href="https://telegram.org" target="_blank" class="telegram" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+        <a href="https://whatsapp.com" target="_blank" class="whatsapp" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    &copy; 2025 Skilmapp — Tous droits réservés.
+  </div>
+</footer>
+
+
+    <!-- Lien vers le JS global -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    {% block js %}{% endblock %}
+</body>
+</html>

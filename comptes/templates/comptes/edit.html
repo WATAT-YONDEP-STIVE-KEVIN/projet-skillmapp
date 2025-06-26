@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Modifier votre compte{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/edit.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="edit-container">
+    <h1>Éditer votre compte</h1>
+    <p>Vous pouvez mettre à jour vos informations ci-dessous :</p>
+    <form method="post" action="{% url 'accueil' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ user_form.as_p }}
+        {{ profile_form.as_p }}
+        <input type="submit" value="Sauvegarder">
+    </form>
+</div>
+{% endblock %}

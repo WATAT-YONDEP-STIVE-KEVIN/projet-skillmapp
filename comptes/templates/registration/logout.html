@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <h1>Logout-page</h1>
+{% endblock %}
+
+{% block content %}
+    <h1>Logged out</h1>
+
+    <p>
+        Vous avez été déconnecté avec success.
+        Vous pouvez <a href="{% url 'login' %}">vous reconnecter</a>
+    </p>
+{% endblock %}

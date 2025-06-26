@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Créer un compte{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="comptes">
+    <div class="register__form__title"><h1>Créer un compte SkillMapp</h1></div>
+    <div class="register__form">
+        <form method="POST">
+    {% csrf_token %}
+    {% for field in user_form %}
+        <div class="form-group{% if field.errors %} has-error{% endif %}">
+            {{ field.label_tag }}
+            {{ field }}
+            {% for error in field.errors %}
+                <p class="error-message">{{ error }}</p>
+            {% endfor %}
+        </div>
+    {% endfor %}
+    
+    <div class="submit-container">
+        <input type="submit" value="Créer mon compte">
+    </div>
+</form>
+
+        <div class="extra-links">
+            <p>Déjà un compte ? <a href="{% url 'login' %}">Connectez-vous ici</a>.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

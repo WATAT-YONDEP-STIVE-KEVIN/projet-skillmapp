@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+/* ====== CONTAINER PRINCIPAL ====== */
+.dashboard-container {
+    padding: 30px 5%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.dashboard-container h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2em;
+    color: #1a1a1a;
+}
+
+/* ====== BOUTON DE TÉLÉCHARGEMENT ====== */
+.download-section {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.btn-download {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-download:hover {
+    background-color: #45a049;
+}
+
+/* ====== ZONE DE GRAPHIQUES ====== */
+.charts {
+    display: flex;
+    gap: 40px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.chart-box {
+    flex: 1 1 300px;
+    min-width: 280px;
+    max-width: 100%;
+}
+
+/* ====== TABLEAU HISTORIQUE ====== */
+.history-table {
+    overflow-x: auto;
+}
+
+.history-table table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px; /* Assure la scrollabilité sur petit écran */
+}
+
+.history-table th, .history-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 0.95rem;
+}
+
+.history-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+/* ====== MEDIA QUERIES ====== */
+
+/* TABLETTES (paysage/portrait) */
+@media (max-width: 991px) {
+    .dashboard-container h1 {
+        font-size: 1.8rem;
+    }
+
+    .btn-download {
+        padding: 10px 16px;
+        font-size: 0.95rem;
+    }
+
+    .chart-box {
+        flex: 1 1 100%;
+    }
+}
+
+/* SMARTPHONES larges (Samsung Galaxy S, iPhone Plus, etc.) */
+@media (max-width: 768px) {
+    .download-section {
+        text-align: center;
+    }
+
+    .btn-download {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .charts {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .dashboard-container h1 {
+        font-size: 1.6rem;
+    }
+}
+
+/* SMARTPHONES petits (iPhone SE, Galaxy A, etc.) */
+@media (max-width: 480px) {
+    .dashboard-container {
+        padding: 20px 4%;
+    }
+
+    .dashboard-container h1 {
+        font-size: 1.4rem;
+        margin-bottom: 30px;
+    }
+
+    .btn-download {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+
+    .history-table th,
+    .history-table td {
+        font-size: 0.85rem;
+        padding: 10px;
+    }
+}
