@@ -20,7 +20,7 @@ from django.conf.urls.static import static
 from django.views.generic.base import TemplateView # Pour la vue de la page d'accueil sur render
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', TemplateView.as_view(template_name='login.html'), name='home'),  # Nouvelle route
+    path('', TemplateView.as_view(template_name='registration/login.html'), name='home'),  # Nouvelle route
     #----------------urls de l'application Comptes--------------------#
     path('comptes/', include('comptes.urls')),
     path('matching/', include('matching.urls')),
