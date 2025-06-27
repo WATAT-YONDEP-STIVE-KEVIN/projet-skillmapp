@@ -15,8 +15,10 @@
 </head>
 <body>
     <header>
-        <h1>Skilmapp</h1>
-        <nav>
+      
+        <h1>Skillmapp</h1>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+        <nav id="main-nav">
             <a href="{% url 'accueil' %}">Accueil</a>
             <a href="{% url 'matching_page' %}">Matching</a>
             <a href="{% url 'dashboard_view' %}">Dashboard</a>
@@ -36,7 +38,7 @@
       
       <div class="member">
         <h3>Co-fondateur</h3>
-        <img src="{% static 'images/watat.jpg' %}" alt="Membre 1">
+        <img  src="{% static 'images/watat.jpg' %}" alt="Membre 1">
         <div class="member-info">
           <strong>WATAT YONDEP STIVE KEVIN</strong><br>
           Data scientist/Web developer
@@ -48,7 +50,7 @@
       
       <div class="member">
         <h3>Co-fondateur</h3>
-        <img src="{% static 'images/watat.jpg' %}" alt="Membre 2">
+        <img src="{% static 'images/desire.jpg' %}" alt="Membre 2">
         <div class="member-info">
           <strong>VOUKENG TEDONKEMWA ERDI DESIRÉ</strong><br>
           Data scientist
@@ -70,14 +72,14 @@
   </div>
 
   <div class="footer-bottom">
-    &copy; 2025 Skilmapp — Tous droits réservés.
+    &copy; 2025 Skillmapp — Tous droits réservés.
   </div>
 </footer>
 
 
     <!-- Lien vers le JS global -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/base1.js' %}"></script>
     {% block js %}{% endblock %}
 </body>
 </html>

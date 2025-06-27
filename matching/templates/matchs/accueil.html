@@ -15,10 +15,13 @@
       Plateforme intelligente de matching entre sujets d'examen et programme scolaire.<br>
       Automatisez la correspondance, identifiez les questions hors programme.
     </p>
-    <a href="{% url 'matching_page' %}" class="cta-button">Lancer le matching</a>
+    <div class="cta-container">
+  <a href="{% url 'matching_page' %}" class="cta-button">Lancer le matching</a>
+</div>
+   
   </div>
   <div class="hero-image">
-    <img src="{% static 'images/hero-illustration.svg' %}" alt="Illustration de matching">
+    <img class= image-cover src="{% static 'images/hero-illustration.svg' %}" alt="Illustration de matching">
   </div>
 </section>
 
@@ -63,7 +66,11 @@
 <section class="contact">
   <h2>Vous avez une question ?</h2>
   <p>Contactez-nous pour toute demande de renseignement ou suggestion.</p>
-  <a href="mailto:contact@skilmapp.com" class="contact-button">Nous contacter</a>
+  
+  <div class="contact-button-container">
+<a href="mailto:contact@skilmapp.com" class="contact-button">Nous contacter</a>
+</div>
+
 </section>
 
 <script src="{% static 'js/accueil.js' %}"></script>

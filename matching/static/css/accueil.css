@@ -269,3 +269,91 @@ body {
 html, body {
   overflow-x: hidden;
 }
+
+/* Wrapper pour centrer le bouton CTA */
+.cta-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+#cta-button {
+  background-color: #f1c40f;
+  color: #2c3e50;
+  padding: 14px 24px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+  text-align: center;
+}
+
+#cta-button:hover {
+  background-color: #f39c12;
+}
+
+/* Responsive : smartphone (centrage + largeur adaptative) */
+@media (max-width: 480px) {
+  .cta-container {
+    justify-content: center;
+  }
+
+  #cta-button {
+    width: 90%;
+    max-width: 300px;
+    font-size: 1rem;
+  }
+}
+
+/* Wrapper pour centrer le bouton Contact */
+.contact-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Bouton contact */
+.contact-button {
+  background-color: #f1c40f;
+  padding: 12px 24px;
+  color: #2c3e50;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.contact-button:hover {
+  background-color: #f39c12;
+}
+
+/* Responsive : smartphone (centrage + largeur adaptative) */
+@media (max-width: 480px) {
+  .contact-button-container {
+    justify-content: center;
+  }
+
+  .contact-button {
+    width: 90%;
+    max-width: 300px;
+    font-size: 1rem;
+  }
+}
+.image-cover {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
+}
+@media (max-width: 480px) {
+  .image-cover {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+}
