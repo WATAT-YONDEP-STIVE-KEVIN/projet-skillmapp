@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -8,40 +12,25 @@ body {
   color: #2c3e50;
   font-size: 16px;
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
-/* HERO SECTION */
+/* === HERO SECTION === */
 .hero {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; /* remplace space-between */
-  text-align: center;
+  justify-content: center;
   align-items: center;
-
   background: linear-gradient(to right, #3498db, #6dd5fa);
   gap: 30px;
-}
-.hero-content {
-  margin: 0 auto;
-}
-
-.hero,
-.features,
-.contact {
   padding: 60px 5%;
-}
-
-@media (max-width: 768px) {
-  .hero,
-  .features,
-  .contact {
-    padding: 40px 3%;
-  }
+  text-align: center;
 }
 
 .hero-content {
   flex: 1 1 300px;
   max-width: 500px;
+  margin: 0 auto;
 }
 
 .hero-content .title {
@@ -60,6 +49,12 @@ body {
   margin: 20px 0;
 }
 
+.cta-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
 .cta-button {
   background-color: #f1c40f;
   color: #2c3e50;
@@ -69,6 +64,7 @@ body {
   text-decoration: none;
   transition: background-color 0.3s ease;
   display: inline-block;
+  text-align: center;
 }
 
 .cta-button:hover {
@@ -80,28 +76,20 @@ body {
   text-align: center;
 }
 
-.hero-image img {
+.image-cover {
+  width: 100%;
   max-width: 100%;
   height: auto;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
 }
 
-/* FEATURES SECTION */
-.feature-icons {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 15px;
-}
-
-.feature-icons i {
-  font-size: 1.8rem;
-  color: #3498db;
-}
-
+/* === FEATURES SECTION === */
 .features {
   text-align: center;
   background-color: #fff;
+  padding: 60px 5%;
 }
 
 .features h2 {
@@ -116,6 +104,8 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   gap: 30px;
+  margin: 0 auto;
+  max-width: 1200px;
 }
 
 .feature-card {
@@ -123,8 +113,8 @@ body {
   border-radius: 10px;
   padding: 30px;
   text-align: center;
-  max-width: 300px;
   width: 100%;
+  max-width: 300px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -134,9 +124,16 @@ body {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
 }
 
-.feature-card i {
-  font-size: 2.5rem;
+.feature-icons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
   margin-bottom: 15px;
+}
+
+.feature-icons i {
+  font-size: 1.8rem;
   color: #3498db;
 }
 
@@ -153,11 +150,28 @@ body {
   line-height: 1.5;
 }
 
-/* CONTACT SECTION */
+/* === CONTACT SECTION === */
 .contact {
   background-color: #3498db;
   color: white;
   text-align: center;
+  padding: 60px 5%;
+}
+
+.contact h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.contact p {
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+}
+
+.contact-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .contact-button {
@@ -168,15 +182,17 @@ body {
   text-decoration: none;
   font-weight: bold;
   display: inline-block;
+  text-align: center;
+  transition: background-color 0.3s ease;
 }
 
 .contact-button:hover {
   background-color: #f39c12;
 }
 
-/* ======= RESPONSIVE DESIGN ======= */
+/* === MEDIA QUERIES === */
 
-/* Tablettes */
+/* TABLETTES */
 @media (max-width: 991px) {
   .hero-content .title {
     font-size: 2rem;
@@ -186,7 +202,8 @@ body {
     font-size: 1.1rem;
   }
 
-  .features h2 {
+  .features h2,
+  .contact h2 {
     font-size: 1.8rem;
   }
 
@@ -199,12 +216,11 @@ body {
   }
 }
 
-/* Smartphones larges (Samsung Galaxy S, iPhone Plus, etc.) */
+/* SMARTPHONES LARGES */
 @media (max-width: 768px) {
   .hero {
     flex-direction: column-reverse;
     padding: 40px 6%;
-    text-align: center;
   }
 
   .hero-content {
@@ -219,21 +235,24 @@ body {
     font-size: 1rem;
   }
 
-  .feature-grid {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .features h2 {
+  .features h2,
+  .contact h2 {
     font-size: 1.6rem;
   }
 
-  .contact {
-    padding: 40px 6%;
+  .feature-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .feature-card {
+    max-width: 320px;
+    width: 90%;
+    margin: 0 auto;
   }
 }
 
-/* Smartphones petits (iPhone SE, Galaxy A, etc.) */
+/* SMARTPHONES PETITS */
 @media (max-width: 480px) {
   body {
     font-size: 15px;
@@ -249,13 +268,15 @@ body {
 
   .cta-button,
   .contact-button {
-    width: 100%;
-    padding: 12px;
+    width: 90%;
+    max-width: 300px;
     font-size: 1rem;
+    padding: 12px;
   }
 
   .feature-card {
     padding: 20px;
+    max-width: 320px;
   }
 
   .feature-card h3 {
@@ -265,95 +286,12 @@ body {
   .feature-card p {
     font-size: 0.9rem;
   }
-}
-html, body {
-  overflow-x: hidden;
-}
 
-/* Wrapper pour centrer le bouton CTA */
-.cta-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-#cta-button {
-  background-color: #f1c40f;
-  color: #2c3e50;
-  padding: 14px 24px;
-  border-radius: 8px;
-  font-weight: bold;
-  text-decoration: none;
-  transition: background-color 0.3s ease;
-  display: inline-block;
-  text-align: center;
-}
-
-#cta-button:hover {
-  background-color: #f39c12;
-}
-
-/* Responsive : smartphone (centrage + largeur adaptative) */
-@media (max-width: 480px) {
-  .cta-container {
-    justify-content: center;
-  }
-
-  #cta-button {
-    width: 90%;
-    max-width: 300px;
-    font-size: 1rem;
-  }
-}
-
-/* Wrapper pour centrer le bouton Contact */
-.contact-button-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-/* Bouton contact */
-.contact-button {
-  background-color: #f1c40f;
-  padding: 12px 24px;
-  color: #2c3e50;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: bold;
-  display: inline-block;
-  text-align: center;
-  transition: background-color 0.3s ease;
-}
-
-.contact-button:hover {
-  background-color: #f39c12;
-}
-
-/* Responsive : smartphone (centrage + largeur adaptative) */
-@media (max-width: 480px) {
   .contact-button-container {
     justify-content: center;
   }
 
-  .contact-button {
-    width: 90%;
-    max-width: 300px;
-    font-size: 1rem;
-  }
-}
-.image-cover {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-  object-fit: cover;
-  display: block;
-  border-radius: 10px;
-}
-@media (max-width: 480px) {
   .image-cover {
-    width: 100%;
-    height: auto;
     border-radius: 8px;
   }
 }
