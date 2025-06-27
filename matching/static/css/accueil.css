@@ -14,11 +14,29 @@ body {
 .hero {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center; /* remplace space-between */
+  text-align: center;
   align-items: center;
-  padding: 60px 10%;
+
   background: linear-gradient(to right, #3498db, #6dd5fa);
   gap: 30px;
+}
+.hero-content {
+  margin: 0 auto;
+}
+
+.hero,
+.features,
+.contact {
+  padding: 60px 5%;
+}
+
+@media (max-width: 768px) {
+  .hero,
+  .features,
+  .contact {
+    padding: 40px 3%;
+  }
 }
 
 .hero-content {
@@ -82,7 +100,6 @@ body {
 }
 
 .features {
-  padding: 60px 10%;
   text-align: center;
   background-color: #fff;
 }
@@ -141,7 +158,6 @@ body {
   background-color: #3498db;
   color: white;
   text-align: center;
-  padding: 60px 10%;
 }
 
 .contact-button {
@@ -249,4 +265,7 @@ body {
   .feature-card p {
     font-size: 0.9rem;
   }
+}
+html, body {
+  overflow-x: hidden;
 }
